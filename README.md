@@ -22,7 +22,9 @@
 2. Add this section in README.md
 ```
 <!-- SERVERS-STATUS-START -->
-(awaiting updates ...)
+- **API Prod** — 🔴 DOWN
+- **Auth Dev** — 🔴 DOWN
+- **https://example.com/** — 🟢 UP
 <!-- SERVERS-STATUS-END -->
 ```
 
