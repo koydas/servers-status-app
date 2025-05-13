@@ -3,5 +3,6 @@
 ## 📡 Statut des serveurs
 
 <!-- SERVERS-STATUS-START -->
-(en attente de mise à jour...)
+- **API Prod** — 🔴 DOWN
+- **Auth Dev** — 🔴 DOWN
 <!-- SERVERS-STATUS-END -->
