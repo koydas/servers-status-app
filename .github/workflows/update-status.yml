@@ -11,6 +11,10 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Assurer que les actions de push sont autorisées
+      actions: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -32,4 +36,3 @@ jobs:
           git add README.md
           git commit -m '🔄 Update server status [skip ci]' || echo "No changes"
           git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
-
