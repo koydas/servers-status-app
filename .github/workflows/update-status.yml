@@ -1,0 +1,34 @@
+name: Update README with Server Status
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Toutes les 30 minutes
+  workflow_dispatch: # Manuel
+  push:
+    paths:
+      - 'servers.json'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install node-fetch@2
+
+      - name: Run script
+        run: node update-readme.js
+
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@users.noreply.github.com'
+          git add README.md
+          git commit -m '🔄 Update server status [skip ci]' || echo "No changes"
+          git push
