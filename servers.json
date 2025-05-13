@@ -6,5 +6,9 @@
   {
     "name": "Auth Dev",
     "url": "https://auth.example.com/health"
+  },
+  {
+    "name": "https://example.com/",
+    "url": "https://example.com/"
   }
 ]
