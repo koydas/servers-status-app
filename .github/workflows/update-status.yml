@@ -34,3 +34,4 @@ jobs:
           git add README.md
           git commit -m '🔄 Update server status [skip ci]' || echo "No changes"
           git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
+
