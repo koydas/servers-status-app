@@ -25,11 +25,6 @@ jobs:
       - name: Run script
         run: node update-readme.js
 
-      - name: Configure Git credentials
-        run: |
-          git config --global credential.helper store
-          echo "https://x-access-token:${GH_PAT}" > ~/.git-credentials
-
       - name: Commit and push changes
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
