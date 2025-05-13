@@ -1,7 +1,7 @@
 # servers-status-app
 
 ## How to use ?
-Simply create a `server.json ` file with this format:
+1. Create a `server.json ` file with this format:
 ```json
 [
   {
@@ -17,6 +17,13 @@ Simply create a `server.json ` file with this format:
     "url": "https://example.com/"
   }
 ]
+```
+
+2. Add this section in README.md
+```
+<!-- SERVERS-STATUS-START -->
+(awaiting updates ...)
+<!-- SERVERS-STATUS-END -->
 ```
 
 ## 📡 Statut des serveurs
