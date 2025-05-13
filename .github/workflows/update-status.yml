@@ -25,6 +25,11 @@ jobs:
       - name: Run script
         run: node update-readme.js
 
+      - name: Configure Git credentials
+        run: |
+          git config --global credential.helper store
+          echo "https://x-access-token:${GH_PAT}" > ~/.git-credentials
+
       - name: Commit and push changes
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -34,5 +39,3 @@ jobs:
           git add README.md
           git commit -m '🔄 Update server status [skip ci]' || echo "No changes"
           git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
-
-
