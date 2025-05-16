@@ -1,0 +1,4 @@
+language: "en"
+icons:
+  down: "🔴"
+  up: "🟢"
