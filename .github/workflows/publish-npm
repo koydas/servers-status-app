@@ -1,32 +1,36 @@
-name: 📦 Publish to npm
+name: 📦 Publish to npm & GitHub Packages
 
 on:
   push:
     tags:
-      - 'v*.*.*'  # Ex: v1.0.0
+      - 'v*.*.*'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
+      - name: Auth to npm (npmjs)
+        run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+
+      - name: Auth to GitHub Packages
+        run: npm config set //npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}
+
+      - name: Install deps
         run: npm ci
 
-      - name: Run tests (optionnel)
-        run: npm test
-        continue-on-error: true  # > enlever si tests obligatoires
+      - name: Build / Test (optionnel)
+        run: npm run build && npm test || true
 
-      - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npmjs
+        run: npm publish --access public
+
+      - name: Publish to GitHub Packages
+        run: |
+          npm publish --registry=https://npm.pkg.github.com/
