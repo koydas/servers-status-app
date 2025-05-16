@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node update-readme.js"
   },
+   "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "node-fetch": "^2.6.9",
     "yaml": "^2.3.5"
