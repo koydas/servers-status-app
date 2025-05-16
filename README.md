@@ -22,16 +22,6 @@
 2. Add this section in README.md
 ```
 <!-- SERVERS-STATUS-START -->
-- **API Prod** — 🔴 DOWN
-- **Auth Dev** — 🔴 DOWN
-- **https://example.com/** — 🟢 UP
+(update here)
 <!-- SERVERS-STATUS-END -->
 ```
-
-## 📡 Statut des serveurs
-
-<!-- SERVERS-STATUS-START -->
-- **API Prod** — 🔴 DOWN
-- **Auth Dev** — 🔴 DOWN
-- **https://example.com/** — 🟢 UP
-<!-- SERVERS-STATUS-END -->
