@@ -22,6 +22,8 @@
 2. Add this section in README.md
 ```
 <!-- SERVERS-STATUS-START -->
-(update here)
+- **API Prod** — 🔴 DOWN
+- **Auth Dev** — 🔴 DOWN
+- **https://example.com/** — 🟢 UP
 <!-- SERVERS-STATUS-END -->
 ```
