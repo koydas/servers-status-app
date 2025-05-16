@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Auth to npm (npmjs)
-        run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+#      - name: Auth to npm (npmjs)
+#        run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
 
       - name: Auth to GitHub Packages
         run: npm config set //npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}
