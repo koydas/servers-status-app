@@ -1,0 +1,13 @@
+{
+  "name": "servers-status-app",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "update-readme.js",
+  "scripts": {
+    "start": "node update-readme.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.9",
+    "yaml": "^2.3.5"
+  }
+}
