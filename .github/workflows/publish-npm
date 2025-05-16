@@ -1,39 +1,32 @@
-name: Update README with Server Status
+name: 📦 Publish to npm
 
 on:
-  schedule:
-    - cron: '*/30 * * * *' # Toutes les 30 minutes
-  workflow_dispatch: # Exécution manuelle
   push:
-    paths:
-      - 'servers.json'
-      - 'configs.yaml'
+    tags:
+      - 'v*.*.*'  # Ex: v1.0.0
 
 jobs:
-  update:
+  publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
 
-      - name: Install your package
-        run: npm install servers-status-updater
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run update
-        run: npx servers-status-updater
+      - name: Run tests (optionnel)
+        run: npm test
+        continue-on-error: true  # > enlever si tests obligatoires
 
-      - name: Commit and push changes
-        run: |
-          git config user.name 'github-actions'
-          git config user.email 'github-actions@users.noreply.github.com'
-          git add README.md
-          git commit -m '🔄 Update server status [skip ci]' || echo "No changes"
-          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
