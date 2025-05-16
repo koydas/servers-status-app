@@ -1,12 +1,18 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
+const YAML = require('yaml');
+
+// > Chargement de la configuration
+const config = YAML.parse(fs.readFileSync('configs.yaml', 'utf8'));
+const ICON_UP = config.icons?.up || '🟢';
+const ICON_DOWN = config.icons?.down || '🔴';
 
 async function checkStatus(url) {
   try {
     const res = await fetch(url, { method: 'GET' });
-    return res.ok ? '🟢 UP' : '🔴 DOWN';
+    return res.ok ? `${ICON_UP} UP` : `${ICON_DOWN} DOWN`;
   } catch {
-    return '🔴 DOWN';
+    return `${ICON_DOWN} DOWN`;
   }
 }
 
