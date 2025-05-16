@@ -24,11 +24,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install node-fetch@2
-      - name: Install dependencies
-        run: npm install node-fetch@2 yaml
+        run: npm install
+
       - name: Run script
-        run: node update-readme.js
+        run: npm start
 
       - name: Commit and push changes
         run: |
