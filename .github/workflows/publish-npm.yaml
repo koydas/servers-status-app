@@ -1,4 +1,4 @@
-name: 📦 Publish to npm & GitHub Packages
+name: 📦 Publish to GitHub Packages
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -16,18 +17,14 @@ jobs:
         with:
           node-version: '20'
 
-#      - name: Auth to npm (npmjs)
-#        run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
-
-      - name: Auth to GitHub Packages
+      - name: Set GitHub Packages auth
         run: npm config set //npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}
 
-      - name: Install deps
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Publish to npmjs
-        run: npm publish --access public
+      - name: Build (si nécessaire)
+        run: npm run build || echo "no build step"
 
       - name: Publish to GitHub Packages
-        run: |
-          npm publish --registry=https://npm.pkg.github.com/
+        run: npm publish
