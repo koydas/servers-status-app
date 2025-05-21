@@ -2,6 +2,8 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const YAML = require('yaml');
 
+console.log("--- UPDATING README ---")
+
 // > Chargement de la configuration
 const config = YAML.parse(fs.readFileSync('configs.yaml', 'utf8'));
 const ICON_UP = config.icons?.up || '🟢';

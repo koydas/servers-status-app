@@ -4,7 +4,11 @@
   "type": "commonjs",
   "main": "update-readme.js",
   "scripts": {
-    "start": "node update-readme.js"
+    "devops:build:containers": "node .devops/build-containers.js",
+    "devops:update:readme": "node .devops/update-readme.js",
+    "start:frontend": "",
+    "test:backend": "",
+    "test:frontend": ""
   },
    "publishConfig": {
     "registry": "https://registry.npmjs.org/"
